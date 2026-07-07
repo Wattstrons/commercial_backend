@@ -47,6 +47,12 @@ const handleContactForm = async (req, res) => {
 
     // Send emails in parallel
   console.log("Contact API reached successfully.");
+// Send email to company
+await transporter.sendMail(mailOptionsCompany);
+
+// Send auto-reply to customer
+await transporter.sendMail(mailOptionsCustomer);
+
 
 
 
