@@ -19,15 +19,22 @@ const handleCareerApplication = async (req, res) => {
     const targetEmail = process.env.EMAIL;
 
     // Configure Nodemailer transporter using GoDaddy configuration
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT),
-      secure: Number(process.env.SMTP_PORT) === 465,
-      auth: {
-        user: process.env.EMAIL,
-        pass: process.env.EMAIL_PASSWORD,
-      },
-    });
+  const transporter = nodemailer.createTransport({
+  host: "smtpout.secureserver.net",
+port: 587,
+secure: false,
+requireTLS: true,
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.EMAIL_PASSWORD,
+  },
+  connectionTimeout: 30000,
+  greetingTimeout: 30000,
+  socketTimeout: 30000,
+});
+
+await transporter.verify();
+console.log("SMTP Connected Successfully");
 
     // 1. Send Application to specific department
     const mailOptionsCompany = {
