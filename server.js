@@ -19,12 +19,13 @@ app.use(helmet());
 app.use(cors({
   origin: [
     "https://wattstrons.com",
-    "https://www.wattstrons.com"
-    
+    "https://www.wattstrons.com",
+    "http://localhost:5173"
   ],
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type", "Authorization"]
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 }));
+
 
 // Parse JSON bodies
 app.use(express.json());
