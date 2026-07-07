@@ -16,7 +16,15 @@ app.set("trust proxy", 1);
 app.use(helmet());
 
 // Enable CORS
-app.use(cors());
+app.use(cors({
+  origin: [
+    "https://wattstrons.com",
+    "https://www.wattstrons.com"
+    
+  ],
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
 // Parse JSON bodies
 app.use(express.json());
