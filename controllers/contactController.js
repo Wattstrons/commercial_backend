@@ -46,10 +46,9 @@ const handleContactForm = async (req, res) => {
     };
 
     // Send emails in parallel
-    await Promise.all([
-      transporter.sendMail(mailOptionsCompany),
-      transporter.sendMail(mailOptionsCustomer)
-    ]);
+  console.log("Contact API reached successfully.");
+
+
 
     return res.status(200).json({ success: true, message: 'Your message has been sent successfully.' });
 
